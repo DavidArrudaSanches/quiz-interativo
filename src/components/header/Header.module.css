@@ -1,0 +1,32 @@
+.header {
+    background-color: #282c34;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #61dafb;
+  }
+  
+  .title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 2em;
+  }
+  
+  .infoBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .questionStatus {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .timer {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #61dafb; /* Cor de destaque para o timer */
+  }

@@ -1,0 +1,55 @@
+.card {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .questionText {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .optionsContainer {
+    /* Centraliza os botões de resposta */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os botões */
+    align-items: center; /* Centraliza horizontalmente os botões (se não tiverem largura 100%) */
+  }
+  
+  .optionButton {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ocupa a largura total do container */
+    max-width: 500px; /* Limita a largura máxima para melhor estética */
+    padding: 15px 20px;
+    font-size: 1.1em;
+    text-align: left;
+    background-color: #61dafb;
+    color: #282c34;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+  }
+  
+  .optionButton:hover {
+    background-color: #4ac5e3;
+  }
+  
+  .optionButton:active {
+    transform: scale(0.98);
+  }
+  
+  .optionLetter {
+    font-weight: bold;
+    margin-right: 15px;
+    min-width: 15px; /* Garante alinhamento */
+  }
