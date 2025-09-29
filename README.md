@@ -1,7 +1,11 @@
 **🚀 Quiz Interativo em React Hooks**
+
+
 Este projeto é um quiz interativo desenvolvido em React que visa demonstrar a aplicação de conceitos fundamentais como useState, useEffect, gerenciamento de estado entre componentes, e o uso de CSS Modules para isolamento de estilos.
 
-🌟 Funcionalidades Principais
+**🌟 Funcionalidades Principais**
+
+
 Header Dinâmico: Exibe o título do quiz, o progresso da questão (X / Y) e um Timer que inicia a cada nova pergunta.
 
 Controle de Tempo: O tempo gasto em cada questão é registrado e armazenado, e o timer é reiniciado automaticamente ao avançar.
@@ -12,7 +16,8 @@ Avanço Automático: Ao clicar em uma resposta, o quiz avança para a próxima q
 
 ScoreBoard Completo: Ao final, exibe um resumo com pontuação total, acertos/erros, tempo total gasto e o detalhe de cada questão, destacando visualmente se a resposta foi correta ou incorreta.
 
-🛠️ Tecnologias Utilizadas
+**🛠️ Tecnologias Utilizadas**
+
 React (com hooks: useState e useEffect)
 
 JavaScript (ES6+)
