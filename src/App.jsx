@@ -1,7 +1,9 @@
+
 import { useState } from 'react'
 import './App.module.css'
 import Header from './components/header'
 import { questions } from './data/questions'; // Importando a lista
+
 
 
 function App() {
@@ -28,17 +30,19 @@ function App() {
   };
   
   return (
-    <div>
-      <Header 
-        title="Quiz Interativo"
-        currentQuestionIndex={currentQuestionIndex}
-        totalQuestions={10} // Exemplo
-        // A SOLUÇÃO: Passar a função para o Header
-        onTimerUpdate={handleTimerUpdate} 
+
+      {isQuizFinished ? (
+        <div className="score-board">
+          <h2>🎉 Quiz Finalizado!</h2>
+          <p>Você respondeu {totalQuestions} questões.</p>
+          <pre>{JSON.stringify(answersHistory, null, 2)}</pre>
+        </div>
+      ) : (
+        <QuestionCard
+          questionData={currentQuestion}
+          onSelectAnswer={handleAnswerSelected} 
         />
-      {/* ... QuestionCard e outros componentes */}
+      )}
     </div>
   );
 }
-
-export default App
