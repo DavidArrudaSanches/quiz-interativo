@@ -1,4 +1,4 @@
-🚀 Quiz Interativo em React Hooks
+**🚀 Quiz Interativo em React Hooks**
 Este projeto é um quiz interativo desenvolvido em React que visa demonstrar a aplicação de conceitos fundamentais como useState, useEffect, gerenciamento de estado entre componentes, e o uso de CSS Modules para isolamento de estilos.
 
 🌟 Funcionalidades Principais
