@@ -1,16 +1,20 @@
-# React + Vite
+🚀 Quiz Interativo em React Hooks
+Este projeto é um quiz interativo desenvolvido em React que visa demonstrar a aplicação de conceitos fundamentais como useState, useEffect, gerenciamento de estado entre componentes, e o uso de CSS Modules para isolamento de estilos.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌟 Funcionalidades Principais
+Header Dinâmico: Exibe o título do quiz, o progresso da questão (X / Y) e um Timer que inicia a cada nova pergunta.
 
-Currently, two official plugins are available:
+Controle de Tempo: O tempo gasto em cada questão é registrado e armazenado, e o timer é reiniciado automaticamente ao avançar.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Seleção de Resposta: O QuestionCard exibe botões clicáveis para as alternativas (A, B, C, D, E).
 
-## React Compiler
+Avanço Automático: Ao clicar em uma resposta, o quiz avança para a próxima questão, garantindo que a resposta e o tempo sejam sincronizados.
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+ScoreBoard Completo: Ao final, exibe um resumo com pontuação total, acertos/erros, tempo total gasto e o detalhe de cada questão, destacando visualmente se a resposta foi correta ou incorreta.
 
-## Expanding the ESLint configuration
+🛠️ Tecnologias Utilizadas
+React (com hooks: useState e useEffect)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+JavaScript (ES6+)
+
+CSS Modules (Para escopo e isolamento de estilos)
