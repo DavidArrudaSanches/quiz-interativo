@@ -1,81 +1,35 @@
-import { useState } from 'react';
-import { questions } from './data/questions'; // Importa a lista de questões
-import Header from './components/header';
-import QuestionCard from './components/QuestionCard';
 
-// Componente principal do Quiz
-export default function App() {
-  // 1. Estado para o índice da questão atual (0 a 9)
+import { useState } from 'react'
+import './App.module.css'
+import Header from './components/header'
+import { questions } from './data/questions'; // Importando a lista
+
+
+
+function App() {
+  // Estado para armazenar o índice da questão atual
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
-  // 2. Estado para armazenar o histórico de respostas e tempos
-  // Estrutura de cada item: { questionId: 1, selectedAnswer: 'useState', timeSpent: 15 }
+  
+  // Estado para armazenar o histórico de respostas e tempos
+  // Exemplo: [{ questionId: 1, selectedAnswer: 'useState', timeSpent: 15 }, ...]
   const [answersHistory, setAnswersHistory] = useState([]);
-
-  // 3. Estado temporário para armazenar o tempo gasto na última questão.
-  // CRUCIAL: O timer do Header é limpo ANTES de a resposta ser processada,
-  // então usamos este estado para guardar o tempo entre os dois eventos.
-  const [timeSpentOnLastQuestion, setTimeSpentOnLastQuestion] = useState(0);
-
-  // Verifica se o quiz terminou
-  const isQuizFinished = currentQuestionIndex >= questions.length;
-
-  // Variáveis para a questão atual
-  const totalQuestions = questions.length;
-  const currentQuestion = questions[currentQuestionIndex];
-
-  // =======================================================
-  // FUNÇÕES DE MANIPULAÇÃO DE ESTADO
-  // =======================================================
-
-  /**
-   * 1. Chamada pelo componente Header (na função de limpeza do useEffect)
-   * Salva o tempo gasto na questão que acabou de ser respondida.
-   * @param {number} time - Tempo em segundos gasto na última questão.
-   */
+  
+    // Função que o Header chamará para salvar o tempo
   const handleTimerUpdate = (time) => {
-    // Armazena o tempo na variável temporária antes de avançar a questão
-    setTimeSpentOnLastQuestion(time);
-  };
-
-  /**
-   * 2. Chamada pelo componente QuestionCard (ao clicar em uma resposta)
-   * Salva a resposta do usuário e avança para a próxima questão.
-   * @param {number} questionId - ID da questão respondida.
-   * @param {string} selectedOption - A opção escolhida pelo usuário.
-   */
-  const handleAnswerSelected = (questionId, selectedOption) => {
-    // 1. Cria o objeto de resposta completo, usando o tempo que foi
-    // salvo pelo Header em 'timeSpentOnLastQuestion'
-    const answerObject = {
-      ...currentQuestion, // Inclui todos os dados da questão para o ScoreBoard
-      questionId: questionId,
-      selectedAnswer: selectedOption,
-      timeSpent: timeSpentOnLastQuestion, // Usa o tempo salvo
-      isCorrect: selectedOption === currentQuestion.answer,
-    };
-
-    // 2. Adiciona o objeto ao histórico de respostas
-    setAnswersHistory((prevHistory) => [...prevHistory, answerObject]);
-
-    // 3. Avança para a próxima questão
-    // Isso forçará a re-renderização e reiniciará o timer no Header.
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    // Esta função salva o tempo e deve ser combinada com a lógica de salvar a resposta
+    // Por enquanto, vamos apenas logar para ver se funciona
+    console.log(`Tempo gasto na questão ${currentQuestionIndex + 1}: ${time} segundos`);
+    
+    // **NOTA CRÍTICA:** No quiz final, você precisará salvar o tempo junto
+    // com a resposta do usuário. O ideal é que a função de avançar
+    // (que é chamada pelo QuestionCard) receba tanto a resposta
+    // quanto o tempo salvo aqui.
+    
+    // Para fins de teste inicial, você pode simplesmente avançar
+    // (embora a lógica final seja mais complexa)
   };
   
-  // =======================================================
-  // RENDERIZAÇÃO
-  // =======================================================
-
   return (
-    <div className="app-container">
-      <Header
-        key={currentQuestionIndex} // CHAVE para forçar a reinicialização do timer
-        title="Quiz Interativo de React Hooks"
-        currentQuestionIndex={currentQuestionIndex}
-        totalQuestions={totalQuestions}
-        onTimerUpdate={handleTimerUpdate} // Prop para salvar o tempo
-      />
 
       {isQuizFinished ? (
         <div className="score-board">
