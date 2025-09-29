@@ -1,0 +1,102 @@
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* --- Estilo do Resumo --- */
+  .summary {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+  }
+  
+  .summary h1 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .finalScore {
+    font-size: 1.8em;
+    color: #2a6a96;
+    font-weight: bold;
+  }
+  
+  .correctCount {
+    color: #28a745; /* Verde para acertos */
+    font-weight: bold;
+  }
+  
+  .incorrectCount {
+    color: #dc3545; /* Vermelho para erros */
+    font-weight: bold;
+  }
+  
+  .detail {
+    font-size: 1.1em;
+    color: #6c757d;
+    margin-top: 10px;
+  }
+  
+  /* --- Estilo dos Cards de Resultado --- */
+  .resultsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Destaque visual: Perguntas corretas em verde */
+  .correctCard {
+    border-left: 5px solid #28a745;
+    background-color: #e9f7eb;
+  }
+  
+  /* Destaque visual: Perguntas incorretas em vermelho */
+  .incorrectCard {
+    border-left: 5px solid #dc3545;
+    background-color: #fceaea;
+  }
+  
+  .questionText {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #343a40;
+  }
+  
+  .detailsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 10px 20px;
+    font-size: 0.95em;
+  }
+  
+  .detailsGrid p {
+    margin: 0;
+  }
+  
+  .userAnswer {
+    /* Resposta escolhida pelo usuário */
+    color: #007bff; /* Azul para destaque da escolha */
+  }
+  
+  .correctAnswer {
+    /* Resposta correta (mostrada apenas em caso de erro) */
+    color: #28a745; 
+    font-weight: bold;
+  }

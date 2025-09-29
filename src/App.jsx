@@ -1,48 +1,69 @@
+// src/App.jsx
+import { useState } from 'react';
+// Caminho correto: ./data/questions
+import { questions } from './data/questions'; 
+import Header from './components/header';
+import QuestionCard from './components/QuestionCard';
+import ScoreBoard from './components/ScoreBoard'; 
 
-import { useState } from 'react'
-import './App.module.css'
-import Header from './components/header'
-import { questions } from './data/questions'; // Importando a lista
-
-
-
-function App() {
-  // Estado para armazenar o índice da questão atual
+export default function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  
-  // Estado para armazenar o histórico de respostas e tempos
-  // Exemplo: [{ questionId: 1, selectedAnswer: 'useState', timeSpent: 15 }, ...]
   const [answersHistory, setAnswersHistory] = useState([]);
-  
-    // Função que o Header chamará para salvar o tempo
+  const [timeSpentOnLastQuestion, setTimeSpentOnLastQuestion] = useState(0);
+
+  const isQuizFinished = currentQuestionIndex >= questions.length;
+  const totalQuestions = questions.length;
+  const currentQuestion = questions[currentQuestionIndex];
+
+ 
   const handleTimerUpdate = (time) => {
-    // Esta função salva o tempo e deve ser combinada com a lógica de salvar a resposta
-    // Por enquanto, vamos apenas logar para ver se funciona
-    console.log(`Tempo gasto na questão ${currentQuestionIndex + 1}: ${time} segundos`);
-    
-    // **NOTA CRÍTICA:** No quiz final, você precisará salvar o tempo junto
-    // com a resposta do usuário. O ideal é que a função de avançar
-    // (que é chamada pelo QuestionCard) receba tanto a resposta
-    // quanto o tempo salvo aqui.
-    
-    // Para fins de teste inicial, você pode simplesmente avançar
-    // (embora a lógica final seja mais complexa)
+    setTimeSpentOnLastQuestion(time);
+  };
+
+
+  const handleAnswerSelected = (questionId, selectedOption) => {
+    if (isQuizFinished) return;
+      
+
+    const answerObject = {
+      ...currentQuestion,
+      questionId: questionId,
+      selectedAnswer: selectedOption,
+      timeSpent: timeSpentOnLastQuestion, 
+      isCorrect: selectedOption === currentQuestion.answer,
+    };
+
+    // 2. Adiciona ao histórico
+    setAnswersHistory((prevHistory) => [...prevHistory, answerObject]);
+
+    // 3. Avança para a próxima questão (isso dispara a limpeza do timer)
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
   
   return (
+    <div className="app-container">
+      {/* A KEY é essencial para forçar o reinício do timer */}
+      <Header
+        key={currentQuestionIndex} 
+        title="Quiz Interativo de React Hooks"
+        currentQuestionIndex={currentQuestionIndex}
+        totalQuestions={totalQuestions}
+        onTimerUpdate={handleTimerUpdate} 
+      />
 
-      {isQuizFinished ? (
-        <div className="score-board">
-          <h2>🎉 Quiz Finalizado!</h2>
-          <p>Você respondeu {totalQuestions} questões.</p>
-          <pre>{JSON.stringify(answersHistory, null, 2)}</pre>
-        </div>
-      ) : (
-        <QuestionCard
-          questionData={currentQuestion}
-          onSelectAnswer={handleAnswerSelected} 
-        />
-      )}
+      <main className="quiz-content">
+        {isQuizFinished ? (
+
+          <ScoreBoard 
+            answersHistory={answersHistory} 
+          />
+        ) : (
+          <QuestionCard
+            questionData={currentQuestion}
+            onSelectAnswer={handleAnswerSelected}
+          />
+        )}
+      </main>
     </div>
   );
 }
